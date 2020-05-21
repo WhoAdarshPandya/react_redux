@@ -1,4 +1,5 @@
 import * as actions from '../actions/actionTypes'
+import {v4 as uuid} from 'uuid'
 
 const TODO_INITIAL_STATE = []
 
@@ -7,7 +8,11 @@ export default (state = TODO_INITIAL_STATE, action) => {
         case actions.ADD_TODO:
             return [
                 ...state,
-                ...action.payload
+                {
+                    id: uuid(),
+                    title : action.payload.title,
+                    completed:false
+                }
             ];
         case actions.REMOVE_TODO:
             return [];
