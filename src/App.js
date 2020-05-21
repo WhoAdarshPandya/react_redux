@@ -1,27 +1,21 @@
-import React,{useState} from 'react'
-import store from './store/store'
-import * as actions from './actions/actionTypes'
+import React from 'react'
+import { useSelector,useDispatch } from 'react-redux'
+import {addTodo} from './actions/Actions'
 
 export default function App() {
-    store.subscribe(() => console.log(store.getState()))
-    const [todos, setTodos] = useState(store.getState())
-    const addTodo = () => {
-        store.dispatch({
-            type:actions.ADD_TODO,
-            payload:{
-                title:'adresh pandeiya'
-            }
-        })
+    const todos = useSelector(state => state)
+    const dispatch = useDispatch();
+    const addTodos = () => {
+        dispatch(addTodo())
     }   
     return (
         <div>
             <p>hello world</p>
-            <button onClick={addTodo}>add todo</button>
+            <p>todo's length : {todos.length}</p>
+            <button onClick={addTodos}>add todo</button>
             {
-                todos.map(todo => (
-                    <p>{todo.title}</p>)
-                )
-            }
+                todos.map(todo => (<p>{todo.title}</p>))
+            }            
         </div>
     )
 }
