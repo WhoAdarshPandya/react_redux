@@ -15,7 +15,9 @@ export default (state = TODO_INITIAL_STATE, action) => {
                 }
             ];
         case actions.REMOVE_TODO:
-            return [];
+            return [
+                ...state.filter(items => items.id !== action.payload.id)
+            ];
         case actions.CHECK_TODO:
             return [];
         default:
