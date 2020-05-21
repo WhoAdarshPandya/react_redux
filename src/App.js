@@ -13,7 +13,7 @@ export default function App() {
     } 
     return (
         <div>
-            <p>hello world</p>
+            <p>hello worldzzz</p>
             <p>todo's length : {todos.length}</p>
             <button onClick={addTodos}>add todo</button>
             {
