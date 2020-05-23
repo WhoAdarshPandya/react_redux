@@ -1,27 +1,19 @@
-import React from 'react'
-import { useSelector,useDispatch } from 'react-redux'
-import { addTodo , removeTodo} from './actions/Actions'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import TodoInput from "./components/TodoInput/TodoInput";
+import TodoList from './components/TodoList/TodoList'
 
 export default function App() {
-    const todos = useSelector(state => state)
-    const dispatch = useDispatch();
-    const addTodos = () => {
-        dispatch(addTodo())
-    }  
-    const removeTodos = id => {
-        dispatch(removeTodo(id))
-    } 
-    return (
-        <div>
-            <p>hello worldzzz</p>
-            <p>todo's length : {todos.length}</p>
-            <button onClick={addTodos}>add todo</button>
-            {
-                todos.map(todo => (
-                    <p onClick={() => {removeTodos(todo.id)}}>
-                        {todo.title}
-                    </p>))
-            }            
-        </div>
-    )
+  return (
+    <div>
+      {" "}
+      <Typography color="secondary" variant="h2" align="center">
+        To Do
+      </Typography>
+      <div style={{ width: "50%", margin: "auto" }}>
+        <TodoInput />
+        <TodoList />
+      </div>
+    </div>
+  );
 }

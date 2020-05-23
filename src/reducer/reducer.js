@@ -19,7 +19,15 @@ export default (state = TODO_INITIAL_STATE, action) => {
                 ...state.filter(items => items.id !== action.payload.id)
             ];
         case actions.CHECK_TODO:
-            return [];
+            return [
+                ...state.map(item => {
+                    if(item.id === action.payload.id)
+                    {
+                        item.completed = !item.completed
+                    }
+                    return item
+                })
+            ];
         default:
             return state;
     }
